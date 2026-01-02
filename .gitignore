@@ -1,0 +1,8 @@
+#node_modules
+node_modules
+
+#firebase_db config
+db-config.json
+
+#complied_files
+/dist
