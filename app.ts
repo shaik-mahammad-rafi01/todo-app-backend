@@ -1,11 +1,11 @@
-import express from 'express'
+import express from 'express';
+import taskRouter from './src/routes/taskRoutes.js';
 
 const app = express();
+app.use(express.json())
 const port = 4002;
 
-app.get("/", (request, response) => {
-    response.send("Hello rafi sever is started @ port 4002")
-})
+app.use("/", taskRouter)
 
 app.listen(port, () => {
     console.log(`server running on port ${port}`)
