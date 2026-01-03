@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { addNewTask, getAllTasks } from "../services/taskServices.js";
+import { addNewTask, deleteTaskFromDB, getAllTasks } from "../services/taskServices.js";
 import type { task } from "../types/task.js";
 
 export const getTasks = async (request: Request, response: Response) => {
@@ -8,7 +8,7 @@ export const getTasks = async (request: Request, response: Response) => {
         response.status(200).send(tasks)
     }
     catch {
-        response.status(500).send({ error: "Failed to fetch task from the database" })
+        response.status(500).json({ error: "Failed to fetch task from the database" })
     }
 }
 
@@ -20,4 +20,24 @@ export const addTask = async (request: Request, response: Response) => {
     } catch (error) {
         response.status(500).json({ error: "Failed to add task" });
     }
+}
+
+export const deleteTask = async (request: Request, response: Response) => {
+    const id  = request.params.id || "";
+
+    if (!id) {
+        response.status(404).send("Task id is need to delete the task so,provide it")
+    }
+    try {
+        const result = await deleteTaskFromDB(id );
+
+        if (!result) {
+            response.status(404).send("Task is not found")
+        }
+        return response.send(200).send("Task is deleted from the database")
+    }
+    catch {
+        response.status(500).send("Failed to delete the task")
+    }
+
 }
