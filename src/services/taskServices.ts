@@ -12,3 +12,7 @@ export const addNewTask = async(Task : task)=>{
     const newTask = await TasksCollection.add(Task)
     return {id:newTask.id , ...Task}
 }
+
+export const deleteTaskFromDB  = (taskId:string)=>{
+    return TasksCollection.doc(taskId).delete();
+}
