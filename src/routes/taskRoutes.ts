@@ -1,9 +1,10 @@
-import { getTasks , addTask} from "../controllers/taskController.js";
+import { getTasks , addTask, deleteTask} from "../controllers/taskController.js";
 import { Router } from "express";
 
 let taskRouter = Router();
 
 taskRouter.get("/getTasks", getTasks);
 taskRouter.post("/addTask" , addTask)
+taskRouter.delete("/deleteTask/:id" , deleteTask)
 
 export default taskRouter;
