@@ -30,11 +30,7 @@ export const deleteTask = async (request: Request, response: Response) => {
     }
     try {
         const result = await deleteTaskFromDB(id );
-
-        if (!result) {
-            response.status(404).send("Task is not found")
-        }
-        return response.send(200).send("Task is deleted from the database")
+        return response.status(200).send(result);
     }
     catch {
         response.status(500).send("Failed to delete the task")

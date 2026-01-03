@@ -13,6 +13,12 @@ export const addNewTask = async(Task : task)=>{
     return {id:newTask.id , ...Task}
 }
 
-export const deleteTaskFromDB  = (taskId:string)=>{
-    return TasksCollection.doc(taskId).delete();
+export const deleteTaskFromDB  = async(taskId:string)=>{
+    const task = await TasksCollection.doc(taskId).get();
+    if(!task.exists){
+        return {message : "task with id not found"}
+    }
+
+     TasksCollection.doc(taskId).delete();
+     return "Task deleted"
 }
