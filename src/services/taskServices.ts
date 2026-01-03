@@ -22,3 +22,17 @@ export const deleteTaskFromDB  = async(taskId:string)=>{
      TasksCollection.doc(taskId).delete();
      return "Task deleted"
 }
+
+export const editTaskService = async(taskId:string , newTask : task)=>{
+    const previousTask = await TasksCollection.doc(taskId).get();
+
+    if(!previousTask.exists){
+        return "Task is not available";
+    }
+
+    await TasksCollection.doc(taskId).update(newTask);
+    const updatedTask = await TasksCollection.doc(taskId).get();
+
+    return {id:taskId , ...updatedTask.data()}
+    
+}
