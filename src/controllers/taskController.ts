@@ -1,7 +1,6 @@
 import type { Request, Response } from "express";
 import { addNewTask, deleteTaskFromDB, editTaskService, getAllTasks } from "../services/taskServices.js";
 import type { task } from "../types/task.js";
-import { request } from "http";
 
 export const getTasks = async (request: Request, response: Response) => {
     try {
@@ -24,13 +23,13 @@ export const addTask = async (request: Request, response: Response) => {
 }
 
 export const deleteTask = async (request: Request, response: Response) => {
-    const id  = request.params.id || "";
+    const id = request.params.id || "";
 
     if (!id) {
         response.status(404).send("Task id is need to delete the task so,provide it")
     }
     try {
-        const result = await deleteTaskFromDB(id );
+        const result = await deleteTaskFromDB(id);
         return response.status(200).send(result);
     }
     catch {
@@ -39,21 +38,21 @@ export const deleteTask = async (request: Request, response: Response) => {
 
 }
 
-export const editTask = async(request : Request , response : Response)=>{
-    try{
+export const editTask = async (request: Request, response: Response) => {
+    try {
         let id = request.params.id as string;
         const updatedTask = request.body;
-        if( !updatedTask.taskName || !updatedTask.description || !updatedTask.status || !updatedTask.priority || !updatedTask.Deadline){
+        if (!updatedTask.taskName || !updatedTask.description || !updatedTask.status || !updatedTask.priority || !updatedTask.Deadline) {
             return response.status(400).send("Please fill the fields");
         }
-        const update = await editTaskService(id , updatedTask);
-        if(!update){
+        const update = await editTaskService(id, updatedTask);
+        if (!update) {
             return response.status(404).send("Task is not found")
         }
         return response.json(update)
 
     }
-    catch{
+    catch {
         return response.status(500).send("Failed to edit the Task")
     }
 }
