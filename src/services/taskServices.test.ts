@@ -49,4 +49,9 @@ describe("Task services test cases", () => {
         expect(tasks).toHaveLength(1)
 
     })
+
+    test("it should delete the task with id", async () => {
+        const result = await deleteTaskFromDB("123");
+        expect(result).toBe("Task deleted")
+    })
 })
