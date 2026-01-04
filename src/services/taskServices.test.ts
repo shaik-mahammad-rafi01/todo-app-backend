@@ -54,4 +54,21 @@ describe("Task services test cases", () => {
         const result = await deleteTaskFromDB("123");
         expect(result).toBe("Task deleted")
     })
+
+    test("it should edit specific task with it's id", async () => {
+        const updatedTask = {
+            taskName: "new todo app",
+            priority: "low",
+            status: "pending",
+            description: "new app",
+            Deadline: "05-01-2026"
+        }
+
+        const result = await editTaskService("123", updatedTask) as any;
+        if (typeof result === "string") {
+            throw new Error("Task not available");
+        }
+
+        expect(result.taskName).toBe("new todo app");
+    })
 })
