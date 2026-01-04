@@ -1,5 +1,5 @@
 import type { task } from "../types/task";
-import db from "../db-config/firebaseConfig";
+import db from "../db-config/firebaseConfig.js";
 
 let TasksCollection = db.collection("todo-collection");
 

@@ -1,4 +1,4 @@
-import { getTasks, addTask, deleteTask, editTask } from "../controllers/taskController";
+import { getTasks, addTask, deleteTask, editTask } from "../controllers/taskController.js";
 import { Router } from "express";
 
 let taskRouter = Router();

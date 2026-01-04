@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { addNewTask, deleteTaskFromDB, editTaskService, getAllTasks } from "../services/taskServices";
+import { addNewTask, deleteTaskFromDB, editTaskService, getAllTasks } from "../services/taskServices.js";
 import type { task } from "../types/task";
 
 export const getTasks = async (request: Request, response: Response) => {
