@@ -42,4 +42,11 @@ describe("Task services test cases", () => {
         expect(task.id).toBe("628142");
         expect(task.taskName).toBe("todo")
     })
+
+    test("getAllTasks", async () => {
+        const tasks = await getAllTasks();
+
+        expect(tasks).toHaveLength(1)
+
+    })
 })
