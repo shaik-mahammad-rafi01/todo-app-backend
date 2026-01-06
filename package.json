@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/app.js",
-    "test":"jest"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -22,8 +22,10 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@types/react-native-dotenv": "^0.2.2",
     "cors": "^2.8.5",
     "express": "^5.2.1",
-    "firebase-admin": "^13.6.0"
+    "firebase-admin": "^13.6.0",
+    "react-native-dotenv": "^3.4.11"
   }
 }
