@@ -9,3 +9,6 @@ db-config.json
 
 #test coverage file
 /coverage
+
+#environment variables
+.env
