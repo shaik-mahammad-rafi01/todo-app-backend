@@ -9,20 +9,40 @@ jest.mock("../services/taskServices", () => ({
         Deadline: "03-01-2026"
     })),
 
-
-}))
-
-test("It should return the task by calling getAllTask", async () => {
-    const task = {
+    addNewTask: jest.fn(() => ({
         taskName: "new todo app",
         priority: "low",
         status: "pending",
         description: "new app",
         Deadline: "03-01-2026"
-    };
+    }))
 
 
-    const result = await request(app).get("/getTasks").send(task)
-    expect(result.body).toEqual(task)
+}))
+describe("controllers test cases", () => {
 
+    test("It should return the task by calling getAllTask", async () => {
+        const task = {
+            taskName: "new todo app",
+            priority: "low",
+            status: "pending",
+            description: "new app",
+            Deadline: "03-01-2026"
+        };
+        const result = await request(app).get("/getTasks").send(task)
+        expect(result.body).toEqual(task)
+
+    })
+
+    test("It should add a new task", async () => {
+        const task = {
+            taskName: "new todo app",
+            priority: "low",
+            status: "pending",
+            description: "new app",
+            Deadline: "03-01-2026"
+        };
+        const result = await request(app).post("/addTask").send(task)
+        expect(result.body).toEqual(task)
+    })
 })
