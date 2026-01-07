@@ -1,4 +1,4 @@
-import { addNewTask, deleteTaskFromDB, editTaskService, getAllTasks } from "./taskServices.js";
+import { addNewTask, deleteTaskFromDB, editTaskService, getAllTasks } from "./taskServices";
 jest.mock("../db-config/firebaseConfig", () => ({
     collection: jest.fn(() => ({
         get: jest.fn(() => ({
