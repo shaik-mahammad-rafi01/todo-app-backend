@@ -3,9 +3,9 @@ import { Router } from "express";
 
 let taskRouter = Router();
 
-taskRouter.get("/getTasks", getTasks);
-taskRouter.post("/addTask", addTask)
-taskRouter.delete("/deleteTask/:id", deleteTask)
-taskRouter.put("/editTask/:id", editTask)
+taskRouter.get("/task", getTasks);
+taskRouter.post("/task", addTask)
+taskRouter.delete("/task/:id", deleteTask)
+taskRouter.put("/task/:id", editTask)
 
 export default taskRouter;
