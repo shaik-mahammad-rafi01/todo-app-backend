@@ -5,20 +5,23 @@ import type { task } from "../types/task";
 export const getTasks = async (request: Request, response: Response) => {
     try {
         const tasks = await getAllTasks()
-        response.status(200).send(tasks)
+        return response.status(200).send(tasks)
     }
     catch {
-        response.status(500).json({ error: "Failed to fetch task from the database" })
+        return response.status(500).json({ error: "Failed to fetch task from the database" })
     }
 }
 
 export const addTask = async (request: Request, response: Response) => {
     try {
         const Task: task = request.body;
+        if (!Task.taskName || !Task.description || !Task.status || !Task.priority || !Task.Deadline) {
+            return response.status(400).json({ Error: "Please provide all required fields" })
+        }
         const newTask = await addNewTask(Task);
-        response.status(201).json(newTask);
+        return response.status(201).json(newTask);
     } catch (error) {
-        response.status(500).json({ error: "Failed to add task" });
+        return response.status(500).json({ error: "Failed to add task" });
     }
 }
 
@@ -26,14 +29,14 @@ export const deleteTask = async (request: Request, response: Response) => {
     const id = request.params.id || "";
 
     if (!id) {
-        response.status(404).send("Task id is need to delete the task so,provide it")
+        return response.status(404).send("Task id is need to delete the task so,provide it")
     }
     try {
         const result = await deleteTaskFromDB(id);
         return response.status(200).send(result);
     }
     catch {
-        response.status(500).send("Failed to delete the task")
+        return response.status(500).send("Failed to delete the task")
     }
 
 }
@@ -49,7 +52,7 @@ export const editTask = async (request: Request, response: Response) => {
         if (!update) {
             return response.status(404).send("Task is not found")
         }
-        return response.json(update)
+        return response.json({ id, update })
 
     }
     catch {
