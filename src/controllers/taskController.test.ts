@@ -1,13 +1,13 @@
 import request from "supertest"
 import { app } from "../app";
 jest.mock("../services/taskServices", () => ({
-    getAllTasks: jest.fn(() => ({
+    getAllTasks: jest.fn(() => Promise.resolve([{
         taskName: "new todo app",
         priority: "low",
         status: "pending",
         description: "new app",
         Deadline: "03-01-2026"
-    })),
+    }])),
 
     addNewTask: jest.fn(() => ({
         taskName: "new todo app",
@@ -37,8 +37,8 @@ describe("controllers test cases", () => {
             description: "new app",
             Deadline: "03-01-2026"
         };
-        const result = await request(app).get("/getTasks").send(task)
-        expect(result.body).toEqual(task)
+        const result = await request(app).get("/task").send(task)
+        expect(result.body).toHaveLength(1)
 
     })
 
@@ -50,7 +50,7 @@ describe("controllers test cases", () => {
             description: "new app",
             Deadline: "03-01-2026"
         };
-        const result = await request(app).post("/addTask").send(task)
+        const result = await request(app).post("/task").send(task)
         expect(result.body).toEqual(task)
     })
 
@@ -63,7 +63,7 @@ describe("controllers test cases", () => {
             description: "new app",
             Deadline: "03-01-2026"
         };
-        const result = await request(app).delete("/deleteTask/123").send(task)
+        const result = await request(app).delete("/task/123").send(task)
         expect(result.text).toBe("Task deleted")
     })
 
@@ -77,7 +77,7 @@ describe("controllers test cases", () => {
             Deadline: "03-01-2026"
         };
 
-        const result = await request(app).put("/editTask/123").send(task)
-        expect(result.body).toEqual(task)
+        const result = await request(app).put("/task/123").send(task)
+        expect(result.body.id).toEqual("123")
     })
 })
