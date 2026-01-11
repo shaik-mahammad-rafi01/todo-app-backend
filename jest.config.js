@@ -5,5 +5,6 @@ export default {
     '^.+\\.ts$': ['ts-jest', { useESM: true }]
   },
   extensionsToTreatAsEsm: ['.ts'],
+  testPathIgnorePatterns: ["/dist/"],
 
 };
