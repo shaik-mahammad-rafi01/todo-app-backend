@@ -6,3 +6,9 @@ db-config.json
 
 #complied_files
 /dist
+
+#test coverage file
+/coverage
+
+#environment variables
+.env

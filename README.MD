@@ -13,16 +13,47 @@
 
 ### Features
 
-- View All Tasks 
-- Add Task
-- Edit Task
-- Delete Task
+#### View All Tasks : 
+- This feature will display a list of tasks fetches from the database and each task contains : 
+
+    1. Task Name
+    2. Description
+    3. Status
+    4. Priority
+    5. Deadline
+
+#### Add Task
+- This will allows user to add a new task to database.
+- User must provide thise files :
+    1. Task Name
+    2. Description
+    3. Status
+    4. Priority
+    5. Deadline
+
+####  Edit Task
+- User can able to edit or update an existing task by modifing the fields.
+
+#### Delete Task 
+- This feature provides user to delete the task permanently from the database.
+- It will delete the task by using task id.
 
 ### Tech Stack
-- Typescript
-- Node.js
-- Firebase database
-- Express
+***Typescript*** 
+-  Follow this documement for getting for  
+information :-  https://www.typescriptlang.org/
+
+***Node.js*** 
+-  Here is the official documention and download link : https://nodejs.org/en/download
+
+***Firebase database***
+- Firebase is used to the task data which provides the NoSQL type database.
+- Here it the official doculmentition : https://firebase.google.com/
+
+***Express***
+- Express is used to build REST APIs for task management of Todo managemant application.
+- Here is the installation and setup process  : https://expressjs.com/ 
+
 
 ### Getting Started
 

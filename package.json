@@ -4,19 +4,30 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build" : "tsc",
-    "start": "node dist/db-config/firebaseConfig.js"
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
+    "@types/supertest": "^6.0.3",
+    "jest": "^30.2.0",
+    "supertest": "^7.2.2",
+    "ts-jest": "^29.4.6",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "firebase-admin": "^13.6.0"
+    "@types/react-native-dotenv": "^0.2.2",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.6.0",
+    "react-native-dotenv": "^3.4.11"
   }
 }
